@@ -1,5 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import Scene from './components/scene';
+import Emulator from "./components/emulator";
+import {ipcRenderer} from 'electron';
 
-ReactDOM.render(<Scene />, document.getElementById('root'));
+ipcRenderer.on('rom-loaded', (event, data) => {
+    ReactDOM.render(<Emulator rom={data} />, document.getElementById('root'));
+})

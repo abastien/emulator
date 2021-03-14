@@ -9,7 +9,7 @@ const Scene = (): JSX.Element => {
   useEffect(() => {
     const canvasObj = canvasRef.current;
     const canvasCtx = canvasObj.getContext('2d');
-    canvasCtx.fillStyle = '#000000';
+    canvasCtx.fillStyle = 'black';
     canvasCtx.fillRect(0, 0, width, height);
   }, [width, height]);
 
