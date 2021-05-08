@@ -10,7 +10,7 @@ const Scene = (): JSX.Element => {
     const canvasCtx = canvasObj.getContext('2d');
     canvasCtx.fillStyle = 'black';
     canvasCtx.fillRect(0, 0, width, height);
-  }, [width, height]);
+  }, [width, height, canvasRef]);
 
   useEffect(() => {
     const resize = (): void => {
@@ -18,10 +18,7 @@ const Scene = (): JSX.Element => {
       setHeight(window.innerHeight);
     }
     window.addEventListener('resize', resize);
-    return () => {
-      console.log('Scene cleanup: Detach resize event listener');
-      window.removeEventListener('resize', resize);
-    }
+    return () => window.removeEventListener('resize', resize);
   }, [])
 
   return <canvas ref={canvasRef} width={width} height={height} />;

@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Scene should render a canvas 1`] = `
+<DocumentFragment>
+  <canvas
+    height="768"
+    width="1024"
+  />
+</DocumentFragment>
+`;
