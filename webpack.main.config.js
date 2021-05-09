@@ -1,3 +1,5 @@
+const WebPackRules = require('./webpack.rules');
+
 module.exports = {
   /**
    * This is the main entry point for your application, it's the first file
@@ -6,9 +8,9 @@ module.exports = {
   entry: './src/index.ts',
   // Put your normal webpack config below here
   module: {
-    rules: require('./webpack.rules'),
+    rules: WebPackRules,
   },
   resolve: {
-    extensions: ['.js', '.ts', '.jsx', '.tsx', '.css', '.json']
+    extensions: ['.js', '.ts', '.jsx', '.tsx', '.css', '.json'],
   },
 };

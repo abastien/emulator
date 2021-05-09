@@ -1,13 +1,15 @@
 import React from 'react';
+import {
+  cleanup, render, fireEvent, act,
+} from '@testing-library/react';
 import Scene from './Scene';
-import {cleanup, render, fireEvent, act} from '@testing-library/react'
 
 interface CustomWindow extends Window {
   innerWidth: number
   innerHeight: number
 }
 
-describe('Scene', function () {
+describe('Scene', () => {
   const defaultWidth = 1024;
   const defaultHeight = 768;
   const mockWindow: CustomWindow = window;
@@ -15,7 +17,7 @@ describe('Scene', function () {
   beforeEach(() => {
     mockWindow.innerWidth = defaultWidth;
     mockWindow.innerHeight = defaultHeight;
-  })
+  });
 
   test('should render a canvas', () => {
     /** given */
@@ -45,8 +47,8 @@ describe('Scene', function () {
     act(() => {
       mockWindow.innerWidth = customWidth;
       mockWindow.innerHeight = customHeight;
-      fireEvent(mockWindow, new Event("resize"))
-    })
+      fireEvent(mockWindow, new Event('resize'));
+    });
     /** then */
     const elements = baseElement.getElementsByTagName('canvas');
     expect(elements.length).toEqual(1);

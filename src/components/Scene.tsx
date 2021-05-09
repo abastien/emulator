@@ -1,4 +1,6 @@
-import React, {useEffect, useLayoutEffect, useRef, useState} from "react";
+import React, {
+  useEffect, useLayoutEffect, useRef, useState,
+} from 'react';
 
 const Scene = (): JSX.Element => {
   const [width, setWidth] = useState(window.innerWidth);
@@ -16,12 +18,12 @@ const Scene = (): JSX.Element => {
     const resize = (): void => {
       setWidth(window.innerWidth);
       setHeight(window.innerHeight);
-    }
+    };
     window.addEventListener('resize', resize);
     return () => window.removeEventListener('resize', resize);
-  }, [])
+  }, []);
 
   return <canvas ref={canvasRef} width={width} height={height} />;
-}
+};
 
 export default Scene;

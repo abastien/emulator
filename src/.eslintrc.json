@@ -1,0 +1,30 @@
+{
+    "extends": ["plugin:react/recommended"],
+    "parser": "@typescript-eslint/parser",
+    "plugins": ["@typescript-eslint"],
+    "globals": {
+        "JSX": true
+    },
+    "rules": {
+        "import/extensions": [ 2, "ignorePackages", {
+            "ts": "never",
+            "tsx": "never"
+        }],
+        "react/jsx-filename-extension": [1, { "extensions": [".tsx"] }],
+        "no-use-before-define": 0,
+        "@typescript-eslint/no-use-before-define": 2
+    },
+    "settings": {
+        "import/resolver": {
+            "node": {
+                "extensions": [".ts", ".tsx"]
+            }
+        }
+    },
+    "overrides": [{
+        "files": ["*.test.*"],
+        "rules": {
+            "import/no-extraneous-dependencies": [0]
+        }
+    }]
+}

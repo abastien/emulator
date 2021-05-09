@@ -1,10 +1,12 @@
-import {app, BrowserWindow, Menu} from 'electron';
+import { app, BrowserWindow, Menu } from 'electron';
 import getMenuTemplate from './menu';
+
+const ElectronSquirrelStartup = require('electron-squirrel-startup');
 
 declare const MAIN_WINDOW_WEBPACK_ENTRY: never;
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
-if (require('electron-squirrel-startup')) {
+if (ElectronSquirrelStartup) {
   app.quit();
 }
 
@@ -15,7 +17,7 @@ const createWindow = async (): Promise<void> => {
     webPreferences: {
       nodeIntegration: true,
       contextIsolation: false,
-    }
+    },
   });
 
   Menu.setApplicationMenu(Menu.buildFromTemplate(getMenuTemplate(mainWindow)));
