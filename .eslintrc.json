@@ -5,9 +5,13 @@
         "node": true,
         "jest": true
     },
-    "extends": ["airbnb"],
+    "extends": ["airbnb", "prettier"],
+    "plugins": ["prettier"],
     "parserOptions": { "ecmaVersion": 12, "sourceType": "module" },
     "settings": {
         "import/core-modules": ["electron", "electron-squirrel-startup"]
+    },
+    "rules": {
+        "prettier/prettier": 2
     }
 }

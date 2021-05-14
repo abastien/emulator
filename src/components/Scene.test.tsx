@@ -1,15 +1,13 @@
-import React from 'react';
-import {
-  cleanup, render, fireEvent, act,
-} from '@testing-library/react';
-import Scene from './Scene';
+import React from "react";
+import { cleanup, render, fireEvent, act } from "@testing-library/react";
+import Scene from "./Scene";
 
 interface CustomWindow extends Window {
-  innerWidth: number
-  innerHeight: number
+  innerWidth: number;
+  innerHeight: number;
 }
 
-describe('Scene', () => {
+describe("Scene", () => {
   const defaultWidth = 1024;
   const defaultHeight = 768;
   const mockWindow: CustomWindow = window;
@@ -19,7 +17,7 @@ describe('Scene', () => {
     mockWindow.innerHeight = defaultHeight;
   });
 
-  test('should render a canvas', () => {
+  test("should render a canvas", () => {
     /** given */
     /** when */
     const { asFragment } = render(<Scene />);
@@ -27,18 +25,18 @@ describe('Scene', () => {
     expect(asFragment()).toMatchSnapshot();
   });
 
-  test('should adapt the canvas to window size', () => {
+  test("should adapt the canvas to window size", () => {
     /** given */
     /** when */
     const { baseElement } = render(<Scene />);
     /** then */
-    const elements = baseElement.getElementsByTagName('canvas');
+    const elements = baseElement.getElementsByTagName("canvas");
     expect(elements.length).toEqual(1);
     expect(elements[0].width).toEqual(defaultWidth);
     expect(elements[0].height).toEqual(defaultHeight);
   });
 
-  test('should resize the canvas on window resize', () => {
+  test("should resize the canvas on window resize", () => {
     /** given */
     const customWidth = 1600;
     const customHeight = 1200;
@@ -47,10 +45,10 @@ describe('Scene', () => {
     act(() => {
       mockWindow.innerWidth = customWidth;
       mockWindow.innerHeight = customHeight;
-      fireEvent(mockWindow, new Event('resize'));
+      fireEvent(mockWindow, new Event("resize"));
     });
     /** then */
-    const elements = baseElement.getElementsByTagName('canvas');
+    const elements = baseElement.getElementsByTagName("canvas");
     expect(elements.length).toEqual(1);
     expect(elements[0].width).toEqual(customWidth);
     expect(elements[0].height).toEqual(customHeight);

@@ -3,37 +3,36 @@ import {
   OpenDialogReturnValue,
   BrowserWindow,
   MenuItemConstructorOptions,
-} from 'electron';
-import * as fs from 'fs';
+} from "electron";
+import * as fs from "fs";
 
-const getMenuTemplate = (parentWindow: BrowserWindow): MenuItemConstructorOptions[] => [
+const getMenuTemplate = (
+  parentWindow: BrowserWindow
+): MenuItemConstructorOptions[] => [
   {
-    label: 'File',
+    label: "File",
     submenu: [
       {
-        label: 'Open',
-        accelerator: 'CmdOrCtrl+O',
+        label: "Open",
+        accelerator: "CmdOrCtrl+O",
         click: (): void => {
-          dialog.showOpenDialog(
-            parentWindow,
-            {
-              filters: [
-                { name: 'NES', extensions: ['nes'] },
-              ],
-              properties: ['openFile'],
-            },
-          ).then((response: OpenDialogReturnValue) => {
-            if (!response.canceled) {
-              fs.readFile(response.filePaths[0], null, (err, data) => {
-                if (err) {
-                  // eslint-disable-next-line no-console
-                  console.error(err);
-                  return;
-                }
-                parentWindow.webContents.send('rom-loaded', data);
-              });
-            }
-          });
+          dialog
+            .showOpenDialog(parentWindow, {
+              filters: [{ name: "NES", extensions: ["nes"] }],
+              properties: ["openFile"],
+            })
+            .then((response: OpenDialogReturnValue) => {
+              if (!response.canceled) {
+                fs.readFile(response.filePaths[0], null, (err, data) => {
+                  if (err) {
+                    // eslint-disable-next-line no-console
+                    console.error(err);
+                    return;
+                  }
+                  parentWindow.webContents.send("rom-loaded", data);
+                });
+              }
+            });
         },
       },
     ],

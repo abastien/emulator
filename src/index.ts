@@ -1,7 +1,7 @@
-import { app, BrowserWindow, Menu } from 'electron';
-import getMenuTemplate from './menu';
+import { app, BrowserWindow, Menu } from "electron";
+import getMenuTemplate from "./menu";
 
-const ElectronSquirrelStartup = require('electron-squirrel-startup');
+const ElectronSquirrelStartup = require("electron-squirrel-startup");
 
 declare const MAIN_WINDOW_WEBPACK_ENTRY: never;
 
@@ -28,18 +28,18 @@ const createWindow = async (): Promise<void> => {
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
-app.on('ready', createWindow);
+app.on("ready", createWindow);
 
 // Quit when all windows are closed, except on macOS. There, it's common
 // for applications and their menu bar to stay active until the user quits
 // explicitly with Cmd + Q.
-app.on('window-all-closed', () => {
-  if (process.platform !== 'darwin') {
+app.on("window-all-closed", () => {
+  if (process.platform !== "darwin") {
     app.quit();
   }
 });
 
-app.on('activate', async (): Promise<void> => {
+app.on("activate", async (): Promise<void> => {
   // On OS X it's common to re-create a window in the app when the
   // dock icon is clicked and there are no other windows open.
   if (BrowserWindow.getAllWindows().length === 0) {

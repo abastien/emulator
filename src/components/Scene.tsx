@@ -1,6 +1,4 @@
-import React, {
-  useEffect, useLayoutEffect, useRef, useState,
-} from 'react';
+import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 
 const Scene = (): JSX.Element => {
   const [width, setWidth] = useState(window.innerWidth);
@@ -9,8 +7,8 @@ const Scene = (): JSX.Element => {
 
   useLayoutEffect(() => {
     const canvasObj = canvasRef.current;
-    const canvasCtx = canvasObj.getContext('2d');
-    canvasCtx.fillStyle = 'black';
+    const canvasCtx = canvasObj.getContext("2d");
+    canvasCtx.fillStyle = "black";
     canvasCtx.fillRect(0, 0, width, height);
   }, [width, height, canvasRef]);
 
@@ -19,8 +17,8 @@ const Scene = (): JSX.Element => {
       setWidth(window.innerWidth);
       setHeight(window.innerHeight);
     };
-    window.addEventListener('resize', resize);
-    return () => window.removeEventListener('resize', resize);
+    window.addEventListener("resize", resize);
+    return () => window.removeEventListener("resize", resize);
   }, []);
 
   return <canvas ref={canvasRef} width={width} height={height} />;

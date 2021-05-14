@@ -1,25 +1,25 @@
-import React from 'react';
-import { ipcRenderer } from 'electron';
-import { act, cleanup, render } from '@testing-library/react';
-import Emulator from './Emulator';
+import React from "react";
+import { ipcRenderer } from "electron";
+import { act, cleanup, render } from "@testing-library/react";
+import Emulator from "./Emulator";
 
 const mockRomData = [78, 69, 83, 26];
 const mockCallback = jest.fn();
 
-jest.mock('electron', () => ({
+jest.mock("electron", () => ({
   ipcRenderer: {
     on: jest.fn().mockImplementation((event, callback) => {
-      mockCallback.mockImplementation(() => callback('event', mockRomData));
+      mockCallback.mockImplementation(() => callback("event", mockRomData));
     }),
   },
 }));
 
-describe('Emulator', () => {
+describe("Emulator", () => {
   const mockConsole = console;
   const mockLog = jest.fn();
   mockConsole.log = mockLog;
 
-  test('should render a canvas', () => {
+  test("should render a canvas", () => {
     /** given */
     /** when */
     const { asFragment } = render(<Emulator />);
@@ -28,7 +28,7 @@ describe('Emulator', () => {
     expect(ipcRenderer.on).toHaveBeenCalled();
   });
 
-  test('should log the rom', () => {
+  test("should log the rom", () => {
     /** given */
     /** when */
     render(<Emulator />);
@@ -37,7 +37,7 @@ describe('Emulator', () => {
     });
     /** then */
     expect(mockCallback).toHaveBeenCalled();
-    expect(mockLog).toHaveBeenCalledWith('ROM loaded', mockRomData);
+    expect(mockLog).toHaveBeenCalledWith("ROM loaded", mockRomData);
   });
 
   afterAll(cleanup);
