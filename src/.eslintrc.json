@@ -12,7 +12,13 @@
         }],
         "react/jsx-filename-extension": [1, { "extensions": [".tsx"] }],
         "no-use-before-define": 0,
-        "@typescript-eslint/no-use-before-define": 2
+        "@typescript-eslint/no-use-before-define": 2,
+        "no-bitwise": 0,
+        "lines-between-class-members": 0,
+        "no-shadow": 0,
+        "@typescript-eslint/no-shadow": 2,
+        "no-unused-vars": 0,
+        "@typescript-eslint/no-unused-vars": 2
     },
     "settings": {
         "import/resolver": {

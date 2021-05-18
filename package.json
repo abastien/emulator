@@ -12,6 +12,9 @@
     "lint": "eslint --ext .js,.ts,.jsx,.tsx .",
     "test": "jest --coverage"
   },
+  "jest": {
+    "modulePathIgnorePatterns": ["out"]
+  },
   "keywords": [],
   "author": {
     "name": "Alexandre Bastien",
